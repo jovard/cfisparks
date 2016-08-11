@@ -15,14 +15,13 @@ path.arc {
 }
 
 .node:hover {
-  fill: #E3935E;
-  font-weight: bold;
+  fill: #1f77b4;
 }
 
 .link {
   fill: none;
-  stroke: #E3935E;
-  stroke-opacity: .05;
+  stroke: #1f77b4;
+  stroke-opacity: .4;
   pointer-events: none;
 }
 
@@ -49,48 +48,17 @@ path.arc {
   stroke: #2ca02c;
 }
 
-.wrap {
-  background: #aaa;
-  margin: 0 auto;
-  display: block;
-  overflow: hidden;
-  width:661px;
-}
-
-.viz {
-  margin: 0 auto;
-  background: #ddd;
-  display: block;
-  float: left;
-  padding: 5px;
-}
-
-
-
     </style>
   </head>
   <body>
-
-
-        <h2>
-          <!--<img src="SparksLogo.png" width="230px" height="188px" style="float:right"/>-->
-          <!--(CfI) Coffee for Innovation<br>
-          <em>CoffeeChat Viz</em>-->
-        </h2>
-
-
-        <div style="position:absolute; top: 275px; right:0px;">
-          <img src="SparksLogo.png" width="230px" height="188px"/>
-
-          <div>All-Hands</div>
-          <div text-align="center">August 2016</div>
-        </div>
-        <div style="position:absolute;bottom:0;right:0; font-size:18px;">tension: <input style="position:relative;top:3px;" type="range" min="0" max="100" value="85">
-        </div>
-
-
+    <h2>
+      <img src="SparksLogo.png" width="230px" height="188px" style="float:right"/>
+      <!--(CfI) Coffee for Innovation<br>
+      <em>CoffeeChat Viz</em>-->
+    </h2>
+    <div style="position:absolute;bottom:0;font-size:18px;">tension: <input style="position:relative;top:3px;" type="range" min="0" max="100" value="85">
     <!--TEXT-->
-
+    </div>
     <script type="text/javascript" src="d3.js"></script>
     <script type="text/javascript" src="d3.layout.js"></script>
     <script type="text/javascript" src="packages.js"></script>
@@ -120,7 +88,7 @@ var line = d3.svg.line.radial()
 // Chrome 15 bug: <http://code.google.com/p/chromium/issues/detail?id=98951>
 var div = d3.select("body").insert("div", "h2")
     .style("top", "-80px")
-    .style("left", "-360px")
+    .style("left", "-160px")
     .style("width", w + "px")
     .style("height", w + "px")
     .style("position", "absolute")
@@ -137,7 +105,7 @@ svg.append("svg:path")
     .attr("d", d3.svg.arc().outerRadius(ry - 120).innerRadius(0).startAngle(0).endAngle(2 * Math.PI))
     .on("mousedown", mousedown);
 
-d3.json("august.json", function(classes) {
+d3.json("new.json", function(classes) {
   var nodes = cluster.nodes(packages.root(classes)),
       links = packages.imports(nodes),
       splines = bundle(links);
